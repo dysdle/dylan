@@ -124,7 +124,7 @@ abstract class Controller {
     }
 
     public function __set($name,$value) {
-        $this->assign($name,$value);
+        //$this->assign($name,$value);
     }
 
     /**
