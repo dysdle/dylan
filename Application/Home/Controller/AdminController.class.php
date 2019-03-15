@@ -17,7 +17,7 @@ class AdminController extends SoftController
      */
     public function getAdminList(){
         $param = I('get.');
-        $data = D('Admin')->getAdminList($param);
+        $data = D('Admin','Logic')->getAdminList($param);
         echo json_encode($data);
     }
 }

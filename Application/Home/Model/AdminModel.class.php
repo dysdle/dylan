@@ -11,18 +11,18 @@ use Home\Model;
 
 class AdminModel extends BaseModel
 {
-    public function __construct()
-    {
-    }
+    /*表字段验证*/
+    protected $_auto = [];
 
     /**
-     * 获取后台用户列表
-     * @return json
-     * @author dylan 2019-03-14 18:00:42
+     * 后台用户是否在职
      */
-    public function getAdminList(){
+    const YES_SHOW = '1'; //在职
+    const NO_SHOW = '2';  //离职
+    const IS_SHOW = [
+        self::YES_SHOW =>'在职',
+        self::NO_SHOW => '离职'
+    ];
 
 
-
-    }
 }
