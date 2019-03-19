@@ -7,6 +7,7 @@
  */
 
 namespace Home\Model;
+
 use Home\Model;
 
 class AdminModel extends BaseModel
@@ -20,9 +21,14 @@ class AdminModel extends BaseModel
     const YES_SHOW = '1'; //在职
     const NO_SHOW = '2';  //离职
     const IS_SHOW = [
-        self::YES_SHOW =>'在职',
+        self::YES_SHOW => '在职',
         self::NO_SHOW => '离职'
     ];
+
+    public function getModel()
+    {
+        return 'AdminModel';
+    }
 
 
 }

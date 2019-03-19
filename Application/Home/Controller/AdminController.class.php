@@ -20,4 +20,15 @@ class AdminController extends SoftController
         $data = D('Admin','Logic')->getAdminList($param);
         echo json_encode($data);
     }
+
+    /**
+     * 添加后台用户
+     * @return json
+     * @author dylan 2019-03-14 18:00:42
+     */
+    public function addAdmin(){
+        $param = I('get.');
+        $data = D('Admin','Logic')->addAdmin($param);
+        echo json_encode($data);
+    }
 }
