@@ -10,19 +10,12 @@ namespace Home\Model;
 
 use Think\Model;
 
+
 class BaseModel extends Model
 {
-    protected $model;
-
     public function __construct()
     {
-        $this->setModel();
-    }
-
-    public function setModel()
-    {
-        $model = D($this->getModel());
-        $this->model = $model;
+        parent::__construct();
     }
 
     /**
@@ -33,7 +26,7 @@ class BaseModel extends Model
      */
     public function addData($data)
     {
-        return $this->model->create($data);
+        return $this->add($this->create($data));
     }
 
     /**
@@ -46,7 +39,7 @@ class BaseModel extends Model
     {
         $where = $param['where'];
         $data = $param['data'];
-        return $this->model->where($where)->update($data);
+        return $this->where($where)->update($data);
     }
 
     /**

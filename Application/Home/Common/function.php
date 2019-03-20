@@ -17,7 +17,7 @@ function jsonList($list = [], $code = '0', $msg = '接口请求成功')
  * 错误数据返回
  * @author dylan 2019-03-15 16:00:43
  */
-function jsonMsg($code = '1', $msg, $list = [])
+function jsonMsg($msg,$code = '1',$list = [])
 {
     return [
         'code' => $code,

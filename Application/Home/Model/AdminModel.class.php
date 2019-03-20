@@ -25,10 +25,4 @@ class AdminModel extends BaseModel
         self::NO_SHOW => '离职'
     ];
 
-    public function getModel()
-    {
-        return 'AdminModel';
-    }
-
-
 }

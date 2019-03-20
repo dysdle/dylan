@@ -27,8 +27,8 @@ class AdminController extends SoftController
      * @author dylan 2019-03-14 18:00:42
      */
     public function addAdmin(){
-        $param = I('get.');
-        $data = D('Admin','Logic')->addAdmin($param);
+        $param = file_get_contents('php://input');
+        $data = D('Admin','Logic')->addAdmin(json_decode($param,true));
         echo json_encode($data);
     }
 }

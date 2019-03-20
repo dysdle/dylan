@@ -9,9 +9,8 @@
 namespace Home\Logic;
 
 use Home\Model;
-use Home\Model\AdminModel;
 
-class AdminLogic extends Model\BaseModel
+class AdminLogic
 {
     protected $adminModel;
 
@@ -39,7 +38,7 @@ class AdminLogic extends Model\BaseModel
         unset($request['per_page']);
 
         //获取数据
-        $data = $this->adminModel->getList($request);
+        $data = D('Admin')->getList($request);
         return jsonList($data);
     }
 
@@ -51,9 +50,12 @@ class AdminLogic extends Model\BaseModel
      */
     public function addAdmin($request)
     {
+        if (empty($request)) {
+            return jsonMsg('添加数据为空');
+        }
         $commit_data = [];
-        $this->startTrans();
-        $commit_data[] = $this->adminModel->addData($request);
+        M()->startTrans();
+        $commit_data[] = D('Admin')->addData($request);
         if (db_commit($commit_data)) {
             return jsonMsg('添加成功');
         } else {
@@ -72,7 +74,7 @@ class AdminLogic extends Model\BaseModel
         $param = $request;
         $commit_data = [];
         $this->startTrans();
-        $commit_data[] = $this->adminModel->updateData();
+        $commit_data[] = D('Admin')->updateData();
         if (db_commit($commit_data)) {
             return jsonMsg('修改成功');
         } else {
