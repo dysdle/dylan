@@ -43,14 +43,14 @@ class BaseModel extends Model
 
     /**
      * 获取数据方法
-     * $data
+     * $param 查询条件
+     * $field 查询字段
      * @return bool
      * @author dylan 2019-03-19 16:44:01
      */
-    public function getList()
+    public function getList($param=[],$field='*')
     {
-
+        return $this->where($param)->limit($param['start'],$param['end'])->field($field)->select();
     }
-
 
 }

@@ -34,11 +34,8 @@ class AdminLogic
         $page_index = $request['page_index'];
         $per_page = $request['per_page'];
 
-        unset($request['page_index']);
-        unset($request['per_page']);
-
         //获取数据
-        $data = D('Admin')->getList($request);
+        $data = D('Admin')->getList(['id'=>['IN','1,8']],'username,enname');
         return jsonList($data);
     }
 
