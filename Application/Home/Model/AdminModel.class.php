@@ -28,6 +28,7 @@ class AdminModel extends BaseModel
     //字段校验条件
     protected $_validate = array(
         array('password','require','请输入密码',self::MUST_VALIDATE),
+        array('username','require','请输入用户名',self::MODEL_INSERT),
     );
 
 }

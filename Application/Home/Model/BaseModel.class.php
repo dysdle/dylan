@@ -31,15 +31,14 @@ class BaseModel extends Model
 
     /**
      * 更新数据方法
-     * $data 更新数据
+     * @$map 更新条件
+     * @$data 更新数据
      * @return bool
      * @author dylan 2019-03-19 16:40:38
      */
-    public function updateData($param)
+    public function updateData($map=[],$data)
     {
-        $where = $param['where'];
-        $data = $param['data'];
-        return $this->where($where)->update($data);
+        return $this->where($map)->save($data);
     }
 
     /**

@@ -59,7 +59,7 @@ class AdminLogic
         if (db_commit($commit_data)) {
             return jsonMsg('添加成功');
         } else {
-            return jsonMsg('添加失败','1');
+            return jsonMsg('添加失败', '1');
         }
     }
 
@@ -71,14 +71,18 @@ class AdminLogic
      */
     public function editAdmin($request)
     {
-        $param = $request;
+        if (empty($request['id'])) {
+            return jsonMsg('数据为空');
+        }
         $commit_data = [];
-        $this->startTrans();
-        $commit_data[] = D('Admin')->updateData();
+        M()->startTrans();
+        $id = $request['id'];
+        unset($request['id']);
+        $commit_data[] = D('Admin')->updateData(['id'=>$id],$request);
         if (db_commit($commit_data)) {
             return jsonMsg('修改成功');
         } else {
-            return jsonMsg('修改失败');
+            return jsonMsg('修改失败', '1');
         }
     }
 
