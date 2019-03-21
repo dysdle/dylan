@@ -17,7 +17,7 @@ function jsonList($list = [], $code = '0', $msg = '接口请求成功')
  * 错误数据返回
  * @author dylan 2019-03-15 16:00:43
  */
-function jsonMsg($msg,$code = '1',$list = [])
+function jsonMsg($msg,$code = '0',$list = [])
 {
     return [
         'code' => $code,
@@ -34,9 +34,9 @@ function db_commit($commit_data)
 {
     $tag = true;
     M()->commit();
-    if (in_array($commit_data)) {
+    if (is_array($commit_data)) {
         foreach ($commit_data as $key => $value) {
-            if ($value === false || $value == '0') {
+            if ($value == false || $value == '0') {
                 M()->rollback();
                 $tag = false;
             }

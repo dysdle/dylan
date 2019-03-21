@@ -59,7 +59,7 @@ class AdminLogic
         if (db_commit($commit_data)) {
             return jsonMsg('添加成功');
         } else {
-            return jsonMsg('添加失败');
+            return jsonMsg('添加失败','1');
         }
     }
 
